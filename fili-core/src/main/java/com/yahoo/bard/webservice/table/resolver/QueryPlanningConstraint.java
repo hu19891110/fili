@@ -6,7 +6,9 @@ import com.yahoo.bard.webservice.data.metric.LogicalMetric;
 import com.yahoo.bard.webservice.data.metric.TemplateDruidQuery;
 import com.yahoo.bard.webservice.druid.model.query.Granularity;
 import com.yahoo.bard.webservice.table.LogicalTable;
+import com.yahoo.bard.webservice.web.ApiRequest;
 import com.yahoo.bard.webservice.web.DataApiRequest;
+import com.yahoo.bard.webservice.web.TablesApiRequest;
 
 import org.joda.time.Interval;
 
@@ -48,6 +50,12 @@ public class QueryPlanningConstraint extends DataSourceConstraint {
         this.requestGranularity = dataApiRequest.getGranularity();
         this.logicalMetricNames = Collections.unmodifiableSet(this.logicalMetrics.stream()
                 .map(LogicalMetric::getName).collect(Collectors.toSet()));
+    }
+
+    public QueryPlanningConstraint(
+            @NotNull TablesApiRequest tablesApiRequest
+    ) {
+        super();
     }
 
     public LogicalTable getLogicalTable() {
